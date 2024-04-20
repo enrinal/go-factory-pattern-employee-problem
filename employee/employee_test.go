@@ -1,9 +1,10 @@
 package employee_test
 
 import (
+	"go-factorypattern-company-case/employee"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"go-factorypattern-company-case/employee"
 )
 
 var _ = Describe("Employee", func() {
@@ -19,6 +20,15 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("manager")
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(empl.GetSalary()).To(Equal(1000))
+			Expect(empl.GetBonus()).To(Equal(200))
+
+			var PersenSalary float64 = float64(200.0/1000.0) * 100
+			Expect(PersenSalary).To(Equal(20))
+
 			// TODO Implement the test for the bonus
 			// Salary is 1000
 			// Bonus is 20% of the salary
@@ -38,6 +48,15 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("staff")
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(empl.GetSalary()).To(Equal(500))
+			Expect(empl.GetBonus()).To(Equal(50))
+
+			var PersenSalary float64 = float64(50.0/500.0) * 100
+			Expect(PersenSalary).To(Equal(10))
+
 			// TODO Implement the test for the bonus
 			// Salary is 500
 			// Bonus is 10% of the salary
@@ -57,6 +76,13 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("intern")
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(empl.GetSalary()).To(Equal(100))
+			Expect(empl.GetBonus()).To(Equal(0))
+			var PersenSalary float64 = 0
+			Expect(PersenSalary).To(Equal(0))
 			// TODO Implement the test for the bonus
 			// Salary is 100
 			// Bonus is 0% of the salary
