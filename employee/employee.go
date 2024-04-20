@@ -44,5 +44,5 @@ func (e *Employee) GetSalary() int {
 }
 
 func (e *Employee) GetBonus() float64 {
-	return 0.0
+	return e.Bonus
 }

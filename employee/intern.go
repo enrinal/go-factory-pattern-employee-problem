@@ -19,6 +19,7 @@ func NewIntern() *Intern {
 		Employee: Employee{
 			Name:   "Intern",
 			Salary: 100,
+			Bonus:  0.0,
 		},
 	}
 }
