@@ -22,6 +22,9 @@ func GetEmployeeFactory(empl string) (EmployeeInterface, error) {
 		// TODO: Return a new intern
 	}
 
+	if empl == "director" {
+		return NewDirector(), nil
+	}
 	// TODO: Create director object
 
 	return nil, errors.New("Employee not found")
