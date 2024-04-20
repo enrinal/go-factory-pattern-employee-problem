@@ -16,6 +16,7 @@ func NewManager() *Manager {
 		Employee: Employee{
 			Name:   "Manager",
 			Salary: 1000,
+			Bonus:  20,
 		},
 	}
 	// TODO: Create a new manager
@@ -24,5 +25,5 @@ func NewManager() *Manager {
 }
 
 func (e *Manager) GetBonus() float64 {
-	return float64(e.Salary) + float64(0.2*float64(e.Salary))
+	return float64((e.Bonus / 100) * float64(e.Salary))
 }

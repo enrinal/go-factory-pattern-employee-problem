@@ -16,6 +16,7 @@ func NewStaff() *Staff {
 		Employee: Employee{
 			Name:   "Staff",
 			Salary: 500,
+			Bonus:  10,
 		},
 	}
 	// TODO: Create a new staff
@@ -24,5 +25,5 @@ func NewStaff() *Staff {
 }
 
 func (e *Staff) GetBonus() float64 {
-	return float64(e.Salary) + float64(0.1*float64(e.Salary))
+	return float64((e.Bonus / 100) * float64(e.Salary))
 }

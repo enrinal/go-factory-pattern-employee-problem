@@ -24,10 +24,10 @@ var _ = Describe("Employee", func() {
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(empl.GetSalary()).To(Equal(1000))
-			Expect(empl.GetBonus()).To(Equal(200))
+			Expect(empl.GetBonus()).To(Equal(float64(200)))
 
-			var PersenSalary float64 = float64(200.0/1000.0) * 100
-			Expect(PersenSalary).To(Equal(20))
+			var PersenSalary float64 = float64(empl.GetBonus()/1000.0) * 100
+			Expect(PersenSalary).To(Equal(float64(20)))
 
 			// TODO Implement the test for the bonus
 			// Salary is 1000
@@ -52,10 +52,10 @@ var _ = Describe("Employee", func() {
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(empl.GetSalary()).To(Equal(500))
-			Expect(empl.GetBonus()).To(Equal(50))
+			Expect(empl.GetBonus()).To(Equal(float64(50)))
 
-			var PersenSalary float64 = float64(50.0/500.0) * 100
-			Expect(PersenSalary).To(Equal(10))
+			var PersenSalary float64 = float64(empl.GetBonus()/500.0) * 100
+			Expect(PersenSalary).To(Equal(float64(10)))
 
 			// TODO Implement the test for the bonus
 			// Salary is 500
@@ -80,9 +80,9 @@ var _ = Describe("Employee", func() {
 			Expect(err).NotTo(HaveOccurred())
 
 			Expect(empl.GetSalary()).To(Equal(100))
-			Expect(empl.GetBonus()).To(Equal(0))
+			Expect(empl.GetBonus()).To(Equal(0.0))
 			var PersenSalary float64 = 0
-			Expect(PersenSalary).To(Equal(0))
+			Expect(PersenSalary).To(Equal(0.0))
 			// TODO Implement the test for the bonus
 			// Salary is 100
 			// Bonus is 0% of the salary
@@ -92,7 +92,27 @@ var _ = Describe("Employee", func() {
 
 	// TODO: Implement the test for the Director object
 	Context("Director Object", func() {
+		It("should return the correct name and salary", func() {
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
 
+			Expect(empl.GetName()).To(Equal("Director"))
+			Expect(empl.GetSalary()).To(Equal(5000))
+		})
+		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
+
+			Expect(empl.GetBonus()).To(Equal(float64(1500)))
+
+			var PersenSalary float64 = float64(empl.GetBonus()/5000.0) * 100
+			Expect(PersenSalary).To(Equal(float64(30)))
+
+			// TODO Implement the test for the bonus
+			// Salary is 5000
+			// Bonus is 30% of the salary
+			// Bonus is 1500
+		})
 	})
 
 	Context("Empty Employee", func() {
