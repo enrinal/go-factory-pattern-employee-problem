@@ -1,9 +1,10 @@
 package employee_test
 
 import (
+	"go-factorypattern-company-case/employee"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"go-factorypattern-company-case/employee"
 )
 
 var _ = Describe("Employee", func() {
@@ -19,10 +20,11 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
-			// TODO Implement the test for the bonus
-			// Salary is 1000
-			// Bonus is 20% of the salary
-			// Bonus is 200
+			manager := employee.NewManager()
+			// Calculate expected bonus
+			expectedBonus := float64(manager.GetSalary()) * 0.2
+
+			Expect(manager.GetBonus()).To(Equal(expectedBonus))
 		})
 
 	})
@@ -42,6 +44,12 @@ var _ = Describe("Employee", func() {
 			// Salary is 500
 			// Bonus is 10% of the salary
 			// Bonus is 50
+			staff := employee.NewStaff()
+			// Calculate expected bonus
+			expectedBonus := float64(staff.GetSalary()) * 0.1
+
+			Expect(staff.GetBonus()).To(Equal(expectedBonus))
+
 		})
 
 	})
@@ -57,16 +65,31 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
-			// TODO Implement the test for the bonus
-			// Salary is 100
-			// Bonus is 0% of the salary
-			// Bonus is 0
+			intern := employee.NewIntern()
+			// Calculate expected bonus
+			expectedBonus := float64(intern.GetSalary()) * 0.0
+
+			Expect(intern.GetBonus()).To(Equal(expectedBonus))
 		})
 	})
 
 	// TODO: Implement the test for the Director object
 	Context("Director Object", func() {
+		It("should return the correct name and salary", func() {
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
 
+			Expect(empl.GetName()).To(Equal("Director"))
+			Expect(empl.GetSalary()).To(Equal(5000))
+		})
+
+		It("should return the correct bonus", func() {
+			director := employee.NewDierector()
+			// Calculate expected bonus
+			expectedBonus := float64(director.GetSalary()) * 0.3
+
+			Expect(director.GetBonus()).To(Equal(expectedBonus))
+		})
 	})
 
 	Context("Empty Employee", func() {
