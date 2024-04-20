@@ -6,6 +6,7 @@ type EmployeeInterface interface {
 	SetSalary(salary int)
 	GetName() string
 	GetSalary() int
+	GetBonus() float64
 	/*
 		TODO: Add a new method called GetBonus() that returns a float64
 	*/
@@ -20,20 +21,28 @@ type Employee struct {
 
 // SetName sets the name of the employee
 func (e *Employee) SetName(name string) {
+	e.Name = name
 	// TODO: Set the name of the employee
 }
 
 // SetSalary sets the salary of the employee
 func (e *Employee) SetSalary(salary int) {
+	e.Salary = salary
 	// TODO: Set the salary of the employee
 }
 
 // GetName gets the name of the employee
 func (e *Employee) GetName() string {
+	return e.Name
 	// TODO: Get the name of the employee
 }
 
 // GetSalary gets the salary of the employee
 func (e *Employee) GetSalary() int {
+	return e.Salary
 	// TODO: Get the salary of the employee
+}
+
+func (e *Employee) GetBonus() float64 {
+	return 0
 }
