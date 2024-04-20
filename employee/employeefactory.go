@@ -8,17 +8,23 @@ import "errors"
 func GetEmployeeFactory(empl string) (EmployeeInterface, error) {
 
 	if empl == "manager" {
+		return NewManager(), nil
 		// TODO: Return a new manager
 	}
 
 	if empl == "staff" {
+		return NewStaff(), nil
 		// TODO: Return a new staff
 	}
 
 	if empl == "intern" {
+		return NewIntern(), nil
 		// TODO: Return a new intern
 	}
 
+	if empl == "director" {
+		return NewDirector(), nil
+	}
 	// TODO: Create director object
 
 	return nil, errors.New("Employee not found")

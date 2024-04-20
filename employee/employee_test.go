@@ -1,9 +1,10 @@
 package employee_test
 
 import (
+	"go-factorypattern-company-case/employee"
+
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-	"go-factorypattern-company-case/employee"
 )
 
 var _ = Describe("Employee", func() {
@@ -19,6 +20,9 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("manager")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(float64(200)))
 			// TODO Implement the test for the bonus
 			// Salary is 1000
 			// Bonus is 20% of the salary
@@ -38,6 +42,9 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("staff")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(float64(50)))
 			// TODO Implement the test for the bonus
 			// Salary is 500
 			// Bonus is 10% of the salary
@@ -57,6 +64,9 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("intern")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(float64(0)))
 			// TODO Implement the test for the bonus
 			// Salary is 100
 			// Bonus is 0% of the salary
@@ -66,7 +76,19 @@ var _ = Describe("Employee", func() {
 
 	// TODO: Implement the test for the Director object
 	Context("Director Object", func() {
+		It("should return the correct name and salary", func() {
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
 
+			Expect(empl.GetName()).To(Equal("Director"))
+			Expect(empl.GetSalary()).To(Equal(5000))
+		})
+
+		It("should return the correct bonus", func() {
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
+			Expect(empl.GetBonus()).To(Equal(float64(1500)))
+		})
 	})
 
 	Context("Empty Employee", func() {
