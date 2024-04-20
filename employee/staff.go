@@ -19,6 +19,7 @@ func NewStaff() *Staff {
 		Employee: Employee{
 			Name:   "Staff",
 			Salary: 500,
+			Bonus:  0.1 * 500,
 		},
 	}
 }

@@ -18,6 +18,7 @@ func NewManager() *Manager {
 		Employee: Employee{
 			Name:   "Manager",
 			Salary: 1000,
+			Bonus:  0.2 * 1000,
 		},
 	}
 }
