@@ -5,13 +5,25 @@ package employee
 // This means that Intern has all the fields and methods of Employee
 type Intern struct {
 	// TODO: Add the Employee struct
+	Employee
 }
 
 // NewIntern creates a new intern
 // It returns a pointer to the intern
 // Creational method
 func NewIntern() *Intern {
+	return &Intern{
+		Employee: Employee{
+			Name:   "Intern",
+			Salary: 100,
+			Bonus:  0,
+		},
+	}
 	// TODO: Create a new intern
 	// Set the name to "Intern"
 	// Set the salary to 100
+}
+
+func (e *Intern) GetBonus() float64 {
+	return 0
 }
