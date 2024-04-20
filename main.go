@@ -22,4 +22,6 @@ func printDetails(e employee.EmployeeInterface) {
 	fmt.Println()
 	fmt.Printf("Salary: %d", e.GetSalary())
 	fmt.Println()
+	fmt.Printf("Bonus: %.2f", e.GetBonus())
+	fmt.Println()
 }
