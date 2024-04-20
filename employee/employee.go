@@ -30,10 +30,11 @@ func (e *Employee) SetSalary(salary int) {
 	// TODO: Set the salary of the employee
 	e.Salary = salary
 }
-func (e *Employee) SetBonus(bonus float64) {
-	e.Bonus = bonus
 
-}
+// func (e *Employee) SetBonus(bonus float64) {
+// 	e.Bonus = bonus
+
+// }
 
 // GetName gets the name of the employee
 func (e *Employee) GetName() string {

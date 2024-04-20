@@ -20,11 +20,11 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
-			manager := employee.NewManager()
-			// Calculate expected bonus
-			expectedBonus := float64(manager.GetSalary()) * 0.2
+			empl, err := employee.GetEmployeeFactory("manager")
+			Expect(err).NotTo(HaveOccurred())
 
-			Expect(manager.GetBonus()).To(Equal(expectedBonus))
+			Expect(empl.GetName()).To(Equal("Manager"))
+			Expect(empl.GetBonus()).To(Equal(200.0))
 		})
 
 	})
@@ -44,11 +44,11 @@ var _ = Describe("Employee", func() {
 			// Salary is 500
 			// Bonus is 10% of the salary
 			// Bonus is 50
-			staff := employee.NewStaff()
-			// Calculate expected bonus
-			expectedBonus := float64(staff.GetSalary()) * 0.1
+			empl, err := employee.GetEmployeeFactory("staff")
+			Expect(err).NotTo(HaveOccurred())
 
-			Expect(staff.GetBonus()).To(Equal(expectedBonus))
+			Expect(empl.GetName()).To(Equal("Staff"))
+			Expect(empl.GetBonus()).To(Equal(50.0))
 
 		})
 
@@ -65,11 +65,11 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
-			intern := employee.NewIntern()
-			// Calculate expected bonus
-			expectedBonus := float64(intern.GetSalary()) * 0.0
+			empl, err := employee.GetEmployeeFactory("intern")
+			Expect(err).NotTo(HaveOccurred())
 
-			Expect(intern.GetBonus()).To(Equal(expectedBonus))
+			Expect(empl.GetName()).To(Equal("Intern"))
+			Expect(empl.GetBonus()).To(Equal(0.0))
 		})
 	})
 
@@ -84,11 +84,11 @@ var _ = Describe("Employee", func() {
 		})
 
 		It("should return the correct bonus", func() {
-			director := employee.NewDierector()
-			// Calculate expected bonus
-			expectedBonus := float64(director.GetSalary()) * 0.3
+			empl, err := employee.GetEmployeeFactory("director")
+			Expect(err).NotTo(HaveOccurred())
 
-			Expect(director.GetBonus()).To(Equal(expectedBonus))
+			Expect(empl.GetName()).To(Equal("Director"))
+			Expect(empl.GetBonus()).To(Equal(1500.0))
 		})
 	})
 
