@@ -1,17 +1,30 @@
 package employee
 
-// Manager is a struct for manager
-// It embeds Employee
-// This means that Manager has all the fields and methods of Employee
+// Manager adalah struktur untuk karyawan manajer
 type Manager struct {
-	// TODO: Add the Employee struct
+	Name   string
+	Salary int
 }
 
-// NewManager creates a new manager
-// It returns a pointer to the manager
-// Creational method
-func NewManager() *Manager {
-	// TODO: Create a new manager
-	// Set the name to "Manager"
-	// Set the salary to 1000
+// GetName mengembalikan nama karyawan
+func (m *Manager) GetName() string {
+	return m.Name
+}
+
+// GetSalary mengembalikan gaji karyawan
+func (m *Manager) GetSalary() int {
+	return m.Salary
+}
+
+// GetBonus mengembalikan bonus karyawan
+func (m *Manager) GetBonus() int {
+	return m.Salary * 20 / 100
+}
+
+// NewManager adalah factory function untuk membuat karyawan manajer baru
+func NewManager() EmployeeInterface {
+	return &Manager{
+		Name:   "Manager",
+		Salary: 5000,
+	}
 }

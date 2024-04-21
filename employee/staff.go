@@ -1,17 +1,30 @@
 package employee
 
-// Staff is a struct for staff
-// It embeds Employee
-// This means that Staff has all the fields and methods of Employee
+// Staff adalah struktur untuk karyawan staf
 type Staff struct {
-	// TODO: Add the Employee struct
+	Name   string
+	Salary int
 }
 
-// NewStaff creates a new staff
-// It returns a pointer to the staff
-// Creational method
-func NewStaff() *Staff {
-	// TODO: Create a new staff
-	// Set the name to "Staff"
-	// Set the salary to 500
+// GetName mengembalikan nama karyawan
+func (s *Staff) GetName() string {
+	return s.Name
+}
+
+// GetSalary mengembalikan gaji karyawan
+func (s *Staff) GetSalary() int {
+	return s.Salary
+}
+
+// GetBonus mengembalikan bonus karyawan
+func (s *Staff) GetBonus() int {
+	return s.Salary * 10 / 100
+}
+
+// NewStaff adalah factory function untuk membuat karyawan staf baru
+func NewStaff() EmployeeInterface {
+	return &Staff{
+		Name:   "Staff",
+		Salary: 3000,
+	}
 }
