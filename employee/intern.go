@@ -1,17 +1,30 @@
 package employee
 
-// Intern is a struct for intern
-// It embeds Employee
-// This means that Intern has all the fields and methods of Employee
+// Intern adalah struktur untuk karyawan intern
 type Intern struct {
-	// TODO: Add the Employee struct
+	Name   string
+	Salary int
 }
 
-// NewIntern creates a new intern
-// It returns a pointer to the intern
-// Creational method
-func NewIntern() *Intern {
-	// TODO: Create a new intern
-	// Set the name to "Intern"
-	// Set the salary to 100
+// GetName mengembalikan nama karyawan
+func (i *Intern) GetName() string {
+	return i.Name
+}
+
+// GetSalary mengembalikan gaji karyawan
+func (i *Intern) GetSalary() int {
+	return i.Salary
+}
+
+// GetBonus mengembalikan bonus karyawan
+func (i *Intern) GetBonus() int {
+	return 0
+}
+
+// NewIntern adalah factory function untuk membuat karyawan intern baru
+func NewIntern() EmployeeInterface {
+	return &Intern{
+		Name:   "Intern",
+		Salary: 2000,
+	}
 }
